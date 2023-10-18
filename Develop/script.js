@@ -14,30 +14,34 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
 
   var choiceLength = window.prompt("Enter how long you want your password to be from 8-128 characters");
-  if (!choiceLength || choiceLength <8 || choiceLength >128) {
-    var warning = window.alert("Please choose a number between 8-128 characters long");
+  if (!choiceLength || choiceLength < 8 || choiceLength > 128) {
+    var warning = window.alert("Please choose a number between 8-128 characters long.");
     return;
-  }else if(isNaN(parseInt(choiceLength)) ){
-    var needsNum= window.alert("Needs to be a number");
+  } else if (isNaN(parseInt(choiceLength))) {
+    var needsNum = window.alert("Needs to be a number.");
     return;
-  
+
   }
-  var choiceLowercase = confirm("Press OK or Cancel if you want your password to have lowercase");
-  if (choiceLowercase === false) {
+  var choiceLowercase = confirm("Press OK or Cancel if you want your password to have lowercase.");
+  var choiceUppercase = confirm("Press OK or Cancel if you want your password to have Uppercase.");
+  var choiceNum = confirm("Press OK or Cancel if you want your password to have Numbers.");
+  var choiceSpecial = confirm("Press OK or Cancel if you want you password to have Specail Characters.");
+
+  if(choiceLowercase === false && choiceUppercase === false && choiceNum === false && choiceSpecial === false){
+    var needToChooseOne= window.alert('You must choose atleast one');
+    return;
+  }else if (choiceLowercase === false) {
     charLowercase = [""];
-  }
-  console.log(charLowercase);
-
-  var choiceUppercase = confirm("Press OK or Cancel if you want your password to have Uppercase");
-  if (choiceUppercase === false) {
+  }else if (choiceUppercase === false) {
     charUppercase = [""];
-  }
-  console.log(charUppercase);
-
-  var choiceSpecial = confirm("Press OK or Cancel if you want you password to have Specail Characters")
-  if (choiceSpecial === false) {
+  }else if (choiceNum === false) {
+    charNum = [""];
+  }else if(choiceSpecial === false) {
     charSpecial = [""];
   }
+  console.log(charLowercase);
+  console.log(charUppercase);
+  console.log(charNum);
   console.log(charSpecial);
 
   var index = Math.floor(Math.random() * charLowercase.length);
@@ -46,17 +50,17 @@ function writePassword() {
   var index2 = Math.floor(Math.random() * charUppercase.length);
   var computerUppercase = charUppercase[index2];
 
-  
+
   var index3 = Math.floor(Math.random() * charSpecial.length);
   var computerSpecial = charSpecial[index3];
-  
+
   var index4 = Math.floor(Math.random() * charNum.length);
   var computerNum = charNum[index4];
 
-console.log(computerLowercase);
-console.log(computerUppercase);
-console.log(computerSpecial);
-console.log(computerNum);
+  console.log(computerLowercase);
+  console.log(computerUppercase);
+  console.log(computerNum);
+  console.log(computerSpecial);
 
 }
 
