@@ -14,9 +14,13 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
 
   var choiceLength = window.prompt("Enter how long you want your password to be from 8-128 characters");
-  if (!choiceLength) {
-    var warning = window.alert("Must be between 8-128 characters long");
+  if (!choiceLength || choiceLength <8 || choiceLength >128) {
+    var warning = window.alert("Please choose a number between 8-128 characters long");
     return;
+  }else if(isNaN(parseInt(choiceLength)) ){
+    var needsNum= window.alert("Needs to be a number");
+    return;
+  
   }
   var choiceLowercase = confirm("Press OK or Cancel if you want your password to have lowercase");
   if (choiceLowercase === false) {
