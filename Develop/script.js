@@ -20,7 +20,7 @@ function generatePassword() {
     return;
 
   }
- 
+
   var choiceLowercase = confirm("Press OK or Cancel if you want your password to have lowercase.");
   var choiceUppercase = confirm("Press OK or Cancel if you want your password to have Uppercase.");
   var choiceNum = confirm("Press OK or Cancel if you want your password to have Numbers.");
@@ -32,16 +32,16 @@ function generatePassword() {
 
 
   if (choiceLowercase === false) {
-    charLowercase = [];
+    charLowercase=[];
   }
   if (choiceUppercase === false) {
-  charUppercase = [];
+    charUppercase=[];
   }
   if (choiceNum === false) {
-    charNum = [];
+    charNum= [];
   }
   if (choiceSpecial === false) {
-    charSpecial = [];
+    charSpecial=[];
   }
 
   console.log(charLowercase);
@@ -57,7 +57,7 @@ function generatePassword() {
       var computerLowercase = charLowercase[index];
       allArrays.push(computerLowercase);
       i++;
-    } 
+    }
 
     if (charUppercase.length > 0) {
       var index2 = Math.floor(Math.random() * charUppercase.length);
@@ -70,30 +70,32 @@ function generatePassword() {
       var index3 = Math.floor(Math.random() * charNum.length);
       var computerNum = charNum[index3];
       allArrays.push(computerNum);
-    i++;
-    } 
+      i++;
+    }
 
     if (charSpecial.length > 0) {
       var index4 = Math.floor(Math.random() * charSpecial.length);
       var computerSpecial = charSpecial[index4];
       allArrays.push(computerSpecial);
-i++;
-    } 
-    
-  
+      i++;
+    }
+
+
   }
-  
+
   while (i < choiceLength);
-return allArrays.toString();
+  let result = allArrays.join("");
+  console.log(result);
+  return result;
 }
 // Write password to the #password input
 function writePassword() {
 
-  
-  var password = generatePassword();
- var passwordText = document.querySelector("#password");
 
- passwordText.value = password; 
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
 
 }
 
@@ -101,7 +103,7 @@ function writePassword() {
 /* 
   console.log(allArrays);
   console.log(choiceLength); */
-  //this is going to give me the index of the array 
+//this is going to give me the index of the array 
 /*   console.log(computerLowercase);
   console.log(computerUppercase);
   console.log(computerNum);
@@ -109,36 +111,36 @@ function writePassword() {
   
   console.log(choiceLength); */
 
-  /*  for (let index = 0; index < choiceLength.length; index++) {
-     var index5= Math.floor(Math.random() * allArrays.length);
-   var charArray= allArrays[index];
-   console.log(charArray);
-   
-   } */
-  // this is going to show me what the random index value is inside the element 
+/*  for (let index = 0; index < choiceLength.length; index++) {
+   var index5= Math.floor(Math.random() * allArrays.length);
+ var charArray= allArrays[index];
+ console.log(charArray);
+ 
+ } */
+// this is going to show me what the random index value is inside the element 
 
 
 
 
-  //this shows all the element values it choose and put them all in a array 
-  /*   var allArrays =[].concat(computerLowercase, computerUppercase, computerNum, computerSpecial);
-    console.log(allArrays);
-    for (let index = 0; index < choiceLength.length; index++) {
-      var index5= Math.floor(Math.random() * allArrays.length);
-    var charArray= allArrays[index5];
-      var result=[];
-      result.push(charArray[index]);
-      console.log(result);
-    }
-   
-  
-  
-    console.log(computerLowercase);
-    console.log(computerUppercase);
-    console.log(computerNum);
-    console.log(computerSpecial);
-  
-  } */
+//this shows all the element values it choose and put them all in a array 
+/*   var allArrays =[].concat(computerLowercase, computerUppercase, computerNum, computerSpecial);
+  console.log(allArrays);
+  for (let index = 0; index < choiceLength.length; index++) {
+    var index5= Math.floor(Math.random() * allArrays.length);
+  var charArray= allArrays[index5];
+    var result=[];
+    result.push(charArray[index]);
+    console.log(result);
+  }
+ 
+ 
+ 
+  console.log(computerLowercase);
+  console.log(computerUppercase);
+  console.log(computerNum);
+  console.log(computerSpecial);
+ 
+} */
 
 
 
