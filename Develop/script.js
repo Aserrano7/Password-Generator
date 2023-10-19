@@ -10,9 +10,7 @@ var charSpecial = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '
 var generateBtn = document.querySelector("#generate");
 
 
-// Write password to the #password input
-function writePassword() {
-
+function generatePassword() {
   var choiceLength = window.prompt("Enter how long you want your password to be from 8-128 characters");
   if (!choiceLength || choiceLength < 8 || choiceLength > 128) {
     var warning = window.alert("Please choose a number between 8-128 characters long.");
@@ -22,58 +20,132 @@ function writePassword() {
     return;
 
   }
+ 
   var choiceLowercase = confirm("Press OK or Cancel if you want your password to have lowercase.");
   var choiceUppercase = confirm("Press OK or Cancel if you want your password to have Uppercase.");
   var choiceNum = confirm("Press OK or Cancel if you want your password to have Numbers.");
   var choiceSpecial = confirm("Press OK or Cancel if you want you password to have Specail Characters.");
-
-  if(choiceLowercase === false && choiceUppercase === false && choiceNum === false && choiceSpecial === false){
-    var needToChooseOne= window.alert('You must choose atleast one');
+  if (choiceLowercase === false && choiceUppercase === false && choiceNum === false && choiceSpecial === false) {
+    var needToChooseOne = window.alert('You must choose atleast one');
     return;
-  }else if (choiceLowercase === false) {
-    charLowercase = [""];
-  }else if (choiceUppercase === false) {
-    charUppercase = [""];
-  }else if (choiceNum === false) {
-    charNum = [""];
-  }else if(choiceSpecial === false) {
-    charSpecial = [""];
   }
+
+
+  if (choiceLowercase === false) {
+    charLowercase = [];
+  }
+  if (choiceUppercase === false) {
+  charUppercase = [];
+  }
+  if (choiceNum === false) {
+    charNum = [];
+  }
+  if (choiceSpecial === false) {
+    charSpecial = [];
+  }
+
   console.log(charLowercase);
   console.log(charUppercase);
   console.log(charNum);
   console.log(charSpecial);
 
-  var index = Math.floor(Math.random() * charLowercase.length);
-  var computerLowercase = charLowercase[index];
+  var allArrays = [];
+  let i = 0;
+  do {
+    if (charLowercase.length > 0) {
+      var index = Math.floor(Math.random() * charLowercase.length);
+      var computerLowercase = charLowercase[index];
+      allArrays.push(computerLowercase);
+      i++;
+    } 
 
-  var index2 = Math.floor(Math.random() * charUppercase.length);
-  var computerUppercase = charUppercase[index2];
+    if (charUppercase.length > 0) {
+      var index2 = Math.floor(Math.random() * charUppercase.length);
+      var computerUppercase = charUppercase[index2];
+      allArrays.push(computerUppercase);
+      i++;
+    }
 
+    if (charNum.length > 0) {
+      var index3 = Math.floor(Math.random() * charNum.length);
+      var computerNum = charNum[index3];
+      allArrays.push(computerNum);
+    i++;
+    } 
 
-  var index3 = Math.floor(Math.random() * charSpecial.length);
-  var computerSpecial = charSpecial[index3];
+    if (charSpecial.length > 0) {
+      var index4 = Math.floor(Math.random() * charSpecial.length);
+      var computerSpecial = charSpecial[index4];
+      allArrays.push(computerSpecial);
+i++;
+    } 
+    
+  
+  }
+  
+  while (i < choiceLength);
+return allArrays.toString();
+}
+// Write password to the #password input
+function writePassword() {
 
-  var index4 = Math.floor(Math.random() * charNum.length);
-  var computerNum = charNum[index4];
+  
+  var password = generatePassword();
+ var passwordText = document.querySelector("#password");
 
-  console.log(computerLowercase);
-  console.log(computerUppercase);
-  console.log(computerNum);
-  console.log(computerSpecial);
+ passwordText.value = password; 
 
 }
 
 
+/* 
+  console.log(allArrays);
+  console.log(choiceLength); */
+  //this is going to give me the index of the array 
+/*   console.log(computerLowercase);
+  console.log(computerUppercase);
+  console.log(computerNum);
+  console.log(computerSpecial);
+  
+  console.log(choiceLength); */
+
+  /*  for (let index = 0; index < choiceLength.length; index++) {
+     var index5= Math.floor(Math.random() * allArrays.length);
+   var charArray= allArrays[index];
+   console.log(charArray);
+   
+   } */
+  // this is going to show me what the random index value is inside the element 
+
+
+
+
+  //this shows all the element values it choose and put them all in a array 
+  /*   var allArrays =[].concat(computerLowercase, computerUppercase, computerNum, computerSpecial);
+    console.log(allArrays);
+    for (let index = 0; index < choiceLength.length; index++) {
+      var index5= Math.floor(Math.random() * allArrays.length);
+    var charArray= allArrays[index5];
+      var result=[];
+      result.push(charArray[index]);
+      console.log(result);
+    }
+   
+  
+  
+    console.log(computerLowercase);
+    console.log(computerUppercase);
+    console.log(computerNum);
+    console.log(computerSpecial);
+  
+  } */
 
 
 
 
 
-/*  var password = generatePassword();
- var passwordText = document.querySelector("#password");
 
- passwordText.value = password; */
+
 
 
 
